@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <script src="common.js"></script>
+    </head>
+    <body style="background-color: black">
+        <div id="mazeHolder" style="position:absolute; top:0; left:0;"></div>
+        <img id="player" style="position:absolute; width:50px; height:50px; left:0; -webkit-transition: all 0.2s" src="ghost.png">
+        <style>
+            div{position: absolute; background-color: yellow; width:50px; height:50px}
+        </style>
+    </body>
+    <script>
+        var mazeData = [[1,1,1,1,1,1,1,1],
+            [0,0,1,1,0,0,0,1],
+            [1,0,0,0,0,1,1,1],
+            [1,0,1,1,0,1,0,1],
+            [1,0,1,1,0,0,0,1],
+            [1,0,0,0,0,1,0,0],
+            [1,1,1,1,1,1,1,1]];
+        onkeydown = handleKeys;
+        onreadystatechange = drawMaze();
+        var px=0, py=1;
+        function drawMaze() {
+            for(var y=0;y<7;y++){
+                for(var x=0;x<8;x++){
+                    var newOb=document.createElement('div');
+                    document.getElementById("mazeHolder").appendChild(newOb);
+                    var divId=Math.random();
+                    newOb.setAttribute("id", divId);
+                    setLeft(divId, 50*x);
+                    setTop(divId, 50*y);
+                    if(mazeData[y][x]==0){
+                        document.getElementById(divId).style.backgroundColor="blue";
+                    }
+                }
+            }
+        }
+        function handleKeys(e) {
+            if ((e.keyCode==37)&&mazeData[py][px-1]==0){px--};
+            if ((e.keyCode==39)&&mazeData[py][px+1]==0){px++};
+            if ((e.keyCode==38)&&mazeData[py-1][px]==0){py--};
+            if ((e.keyCode==40)&&mazeData[py++][px]==0){py++};
+            setLeft('player',px*50);
+            setTop('player',py*50);
+            if(px==7&&py==5){alert("well done")};
+        }
+    </script>
+</html>

@@ -1,0 +1,52 @@
+<html>
+    <head>
+            <meta name="viewport" content="height=device-height, width=device-width, user-scalable=no" />
+            <script src="common.js"></script>
+            <link rel="stylesheet" type="text/css" href="common.css">
+    </head>
+    <body style="background-color:#2980b9; max-height:100%; width:100%;">
+        <img id="sub" style="position:absolute; top:500px; width:100px" src="sub.png">
+        <img id="coin" style="position:absolute; left:300px;height:50px; width:50px" src="coin.ico">
+        <p id="scoreTB" style="position:absolute; color:white; font-size:20px;font-family:Arial">Score: 0</p>
+    </body>
+    <script>
+        var score=0, angle=0, speed=4, subX=0, subY=0, gameTimer;
+        onkeydown=handleKeys;
+        gameTimer=window.setInterval(moveThings,20);
+
+        function moveThings(){
+            subX=subX+speed*Math.cos(Math.PI*angle/180);
+            subY=subY+speed*Math.sin(Math.sin(Math.PI*angle/180));
+            if (subX<-100){subX=innerWidth;}
+            if(subX>innerWidth){subX=-100;}
+            if(subY<-100){subY=innerHeight;}
+            if(subY>innerHeight){subY=-100;}
+            setLeft("sub",subX);
+            setTop("sub",subY);
+            y=getTop("coin");
+            setTop("coin", y+1+score*0.1);
+            checkHit();
+            if(y>window.innerHeight-50){gameOver();}
+        }
+        function checkHit(){
+            if(isOverlapping("sub","coin", 50)){
+                score++;
+                document.getElementById("scoreTB").innerText="Score: "+score;
+                setTop("coin",0);
+                setLeft("coin",randomNumber(0,innerWidth-100));
+                new Audio("beep.mp3").play();
+            }
+        }
+        function handleKeys(e){
+            if (e.keyCode==38){angle=angle-10}
+            if (e.keyCode==40){angle=angle+10}
+            document.getElementById("sub").style.webkitTransform ='rotate('+angle+'deg)';
+        }
+        function gameOver(){
+            clearInterval(gameTimer);
+            if(confirm("Game over - Click OK to play again.")==true){
+                location.reload();
+            }
+        }
+    </script>
+</html>

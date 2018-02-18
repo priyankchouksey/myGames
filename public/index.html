@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <style type="text/css">
+            html, body, .container
+            {
+                height: 100%; 
+                min-height: 100%;
+            }
+            div
+            {
+                text-align: center;
+            }
+            .metro-box { float: left; position: relative; 
+            /* margin: 0.5em; padding: 0.5em;  */
+            background: #555; width: 15em; height: 8em; text-decoration: none; cursor: pointer; overflow: hidden; color: #fff; background: #00a8ec; z-index: 9; }
+            .metro-box:hover { opacity: 0.85; filter: alpha(opacity=85); }
+            .metro-box span { position: absolute; left: 0.5em; bottom: 0.5em; font-size: 1em; font-weight: normal; z-index: 8; }
+            .metro-box img.icon { position: absolute; left: 50%; top: 50%; margin-left: -32px; margin-top: -32px; z-index: 7; width: 50px; height: 50px; }
+            .metro-box img.big { margin-left: -64px; margin-top: -64px; }
+            .metro-box img.cover { position: absolute; left: 0; top: 0; width: 100%; z-index: 6; }
+
+            .first {
+                float: left;
+                width: 20%;
+                height: 30%;
+                background-color: #DD5616;
+                align-content: center;
+            }
+
+            .second{
+                float: left;
+                width: 20%;
+                height: 70%;
+                background-color: #DA931D;
+            }
+
+
+            .third{
+                float: right;
+                width: 80%;
+                height: 80%;
+                background-color: #01BBE2;
+            }
+
+            .fourth {
+                float: right;
+                width: 40%;
+                height: 20%;
+                background-color: #024D91;
+            }
+
+            .last{
+                float: right;
+                width: 40%;
+                height: 20%;
+                background-color: #67BF11;
+            }
+            i
+            {
+
+            }
+        </style>
+    </head>
+    <body>
+            <div class="container">
+                <a class="metro-box first metro" href="Alien.html">
+                    <span>Alien Chase</span>
+                    <img class="icon" src="alien.png" style="width:50px; height:50px;">
+                </a>
+                <a class="metro-box third" href="submarine.html">
+                    <span>Submarine</span>
+                    <img class="icon" src="sub.png" >
+                </a>
+                <a class="metro-box second" href="ghost.html">
+                    <span>Ghost Maze</span>
+                    <img class="icon" src="ghost.png" >
+                </a>
+                <a class="metro-box fourth">
+                    <span>About</span>
+                </a>
+                <a class="metro-box last" href="rock.html">
+                    <span>Rock Storm</span>
+                    <img class="icon" src="spaceship.png" >
+                </a>
+            </div>
+    </body>
+    <script src="index.js"></script>
+</html>
